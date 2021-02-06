@@ -1,4 +1,3 @@
-import random
 import requests
 from flask import Flask
 
