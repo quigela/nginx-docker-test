@@ -1,11 +1,15 @@
-import random
+import requests
 from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
 def get_ibm():
-    ibm_v = round(random.uniform(120.52, 121.80), 2)
+    response = requests.get("https://api.polygon.io/v2/aggs/ticker/IBM/prev?unadjusted=true&apiKey=qKC33tW0gXmBUIDg_A3eltmY4YzRvZJJ")
+    ibm_v = 0
+    if response.status_code == 200:
+        ibm_v = response.json()['results'][0]['c']
+
     return { 'ibm_v': ibm_v }
 
 if __name__ == '__main__':
