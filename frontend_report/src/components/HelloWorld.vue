@@ -2,10 +2,10 @@
   <div class="hello">
     <h1>API Report</h1>
     <div>
-      IBM on the NYSE (Internal): {{ibm_v}}
+      IBM Previous Close on NYSE: {{ibm_v}}
     </div>
     <div>
-      Temperature in Warrington (External): {{temp_f}}
+      Temperature in Warrington: {{temp_f}}
     </div>
   </div>
 </template>
@@ -27,14 +27,15 @@ export default {
     }
   },
   async mounted() {
-    await axios({ method: "GET", "url": "http://localhost/ibm" })
+    let p = location.protocol;
+    await axios({ method: "GET", "url": p + "//report.quigela.xyz/ibm" })
           .then(result => {
             this.ibm_v = result.data['ibm_v'];
           }, (err) => {
             console.error(err);
           });
 
-    await axios({ method: "GET", "url": "http://localhost/weather" })
+    await axios({ method: "GET", "url": p + "//report.quigela.xyz/weather" })
           .then(result => {
             this.temp_f = result.data['temp_f'];
           }, (err) => {
