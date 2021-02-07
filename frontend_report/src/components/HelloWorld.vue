@@ -27,15 +27,14 @@ export default {
     }
   },
   async mounted() {
-    let p = location.protocol;
-    await axios({ method: "GET", "url": p + "//report.quigela.xyz/ibm" })
+    await axios({ method: "GET", "url": location.href + "ibm" })
           .then(result => {
             this.ibm_v = result.data['ibm_v'];
           }, (err) => {
             console.error(err);
           });
 
-    await axios({ method: "GET", "url": p + "//report.quigela.xyz/weather" })
+    await axios({ method: "GET", "url": location.href + "weather" })
           .then(result => {
             this.temp_f = result.data['temp_f'];
           }, (err) => {
