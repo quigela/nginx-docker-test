@@ -3,8 +3,8 @@
 
 ### Run
 
-```docker-compose -f compose-reverse-proxy build```  
-```docker-compose -f compose-reverse-proxy -f compose-proxy-manager up```  
+```docker-compose -f compose-reverse-proxy.yaml build```  
+```docker-compose -f compose-reverse-proxy.yaml -f compose-proxy-manager.yaml up```  
 
 ### Proxy Manager
 * HTTP Port: 80
