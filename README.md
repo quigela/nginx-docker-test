@@ -3,10 +3,17 @@
 
 ### Run
 
-```docker-compose build```  
-```docker-compose up```
+```docker-compose -f compose-reverse-proxy build```  
+```docker-compose -f compose-reverse-proxy -f compose-proxy-manager up```  
+
+### Proxy Manager
+* HTTP Port: 80
+* HTTPS Port: 443
+* Admin Port: 8880
+
+### Reverse Proxy
 
 #### Endpoints Created
 * /             : Vue Frontend
-* /ibm-service  : IBM Service (Generates random value for IBM from min and max on 02/05/2021)
-* /api-service  : Retrieves temperature from external weather API
+* /ibm  : Retrieves previous close on IBM ticker from API
+* /weather  : Retrieves temperature from API
